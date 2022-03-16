@@ -1,0 +1,62 @@
+Select ProductID, Name, Color, ListPrice
+From Production.Product
+
+Select ProductID, Name, Color, ListPrice
+From Production.Product
+Where ListPrice <> 0
+
+Select ProductID, Name, Color, ListPrice
+From Production.Product
+Where Color is NULL
+
+Select ProductID, Name, Color, ListPrice
+From Production.Product
+Where Color is not NULL
+
+Select ProductID, Name, Color, ListPrice
+From Production.Product
+Where Color is not NULL and ListPrice > 0
+
+Select Name + ' ' + Color as [NameColor]
+From Production.Product
+Where Color is not NULL
+
+Select CONCAT('NAME: ',Name + ' --COLOR: ' + Color) as [NameColor]
+From Production.Product
+Where Color is not NULL
+
+Select ProductID, Name
+From Production.Product
+Where ProductID Between 400 and 500
+
+Select ProductID, Name, color
+From Production.Product
+Where color in ('Black','Blue')
+
+Select *
+From production.Product p
+Where p.Name Like 'S%'
+
+Select  Name, ListPrice
+From Production.Product p
+Where p.Name Like 'S%'
+Order By Name ASC
+
+Select  Name, ListPrice
+From Production.Product p
+Where p.Name Like '[S,A]%'
+Order By Name ASC
+
+Select *
+from Production.Product p
+where p.Name Like 'SPO[^K]%'
+Order By Name ASC
+
+Select distinct Color 
+from Production.Product p
+Order By Color DESC
+
+Select distinct Color, ProductSubcategoryID
+from Production.Product p
+Where p.color is not NULL and p.ProductSubcategoryID is not NULL 
+Order By Color DESC
