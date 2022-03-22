@@ -1,0 +1,54 @@
+Select COUNT(*)
+From Production.Product p
+
+Select COUNT(p.ProductSubcategoryID)
+From Production.Product p
+
+Select p.ProductSubcategoryID, COUNT(p.ProductSubcategoryID) as [CountedProduct]
+From Production.Product p
+where p.ProductSubcategoryID is not NULL
+group by p.ProductSubcategoryID
+
+Select p.ProductSubcategoryID, COUNT(p.ProductSubcategoryID) as [NoSubcategory]
+From Production.Product p
+where p.ProductSubcategoryID is Null
+group by p.ProductSubcategoryID
+
+Select sum(p.Quantity)
+From Production.ProductInventory p
+
+Select p.ProductID as [ProductID], sum(p.Quantity) as [The Sum]
+From Production.ProductInventory p
+where p.LocationID = 40
+group by p.ProductID
+having sum(p.Quantity) < 100
+
+Select p.Shelf,p.ProductID as [ProductID], sum(p.Quantity) as [The Sum]
+From Production.ProductInventory p
+where p.LocationID = 40
+group by p.ProductID,p.Shelf
+having sum(p.Quantity) < 100
+
+
+Select avg(p.Quantity)
+From Production.ProductInventory p
+where p.LocationID = 10 
+
+Select p.ProductID ,p.Shelf, avg(p.Quantity) as [TheAvg]
+From Production.ProductInventory p
+where p.Shelf <> 'N/A'
+group by p.ProductID,p.Shelf
+
+select p.Color, p.Class, sum(p.ProductID) as [TheCount], avg(p.ListPrice) as [AvgPrice] 
+From production.Product p
+where p.Color is not NULL And p.Class is not NULL
+group by p.color, p.Class
+
+Select c.Name, s.Name
+From Person.CountryRegion c join person.StateProvince s
+on c.CountryRegionCode = s.CountryRegionCode
+
+Select c.Name, s.Name
+From Person.CountryRegion c join person.StateProvince s
+on c.CountryRegionCode = s.CountryRegionCode
+where c.Name in ('Canada', 'German')
